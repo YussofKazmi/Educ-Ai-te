@@ -1,4 +1,4 @@
 User name is John Doe.
-User is an AI Engineer.
+User is an someone trying to learn a specific topic.
 User is interested in AI Agents.
 User is based in San Francisco, California.

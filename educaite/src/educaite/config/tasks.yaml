@@ -1,17 +1,109 @@
-research_task:
+gather_information_task:
+  name: "Gather information on the topic"
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Research and collect high-quality, reliable information about the topic: "{topic}".
+    Search the web and other relevant resources (e.g., Wikipedia, articles, documentation).
+    Focus on definitions, key concepts, historical/contextual background, important subtopics,
+    and any commonly asked questions or misconceptions.
+
+    Make sure the information is factual, up to date, and from trustworthy sources.
+    Avoid speculation or unverified claims.
+
+    Log your main research steps and decisions briefly.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
+    A well-structured research dossier in markdown with sections such as:
+    - Overview of the topic
+    - Key concepts and definitions
+    - Important subtopics
+    - Notable examples or case studies (if applicable)
+    - Common misconceptions or pitfalls
+    - References / sources (URLs or titles)
+
+    Include a short "Research Log" section at the end describing what sources you used
+    and any important filtering or verification decisions.
   agent: researcher
 
-reporting_task:
+compile_knowledge_task:
+  name: "Compile and index knowledge for the topic"
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Take the research dossier produced about "{topic}" and organize it for efficient retrieval.
+    Structure the content so that other agents, especially the Educator and Quiz Agent,
+    can easily query and reuse it.
+
+    You may simulate storing/indexing by clearly organizing content into labeled sections,
+    bullet points, or a simple pseudo-index/searchable structure.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A cleaned, organized, and indexed version of the research dossier in markdown, including:
+    - A concise table of contents
+    - Clearly labeled sections and subsections
+    - Bullet-point summaries of key information
+    - Optional "Index / Keywords" section listing important terms and where they appear
+
+    Include brief notes on how this structure would support search or querying by other agents.
+  agent: knowledge_compiler
+
+create_guide_task:
+  name: "Create an educational guide on the topic"
+  description: >
+    Using the organized knowledge about "{topic}", create a clear, structured educational guide.
+    The guide should be suitable for a motivated learner who may not be an expert.
+    Explain concepts in simple language, build up from basics to more advanced ideas,
+    and use examples or analogies when helpful.
+
+    The guide should feel like a mini-course or lesson, not just a raw summary.
+  expected_output: >
+    A polished educational guide in markdown containing:
+    - Title and short introduction to the topic
+    - Prerequisites (if any)
+    - Sectioned explanation that progresses from basic to intermediate/advanced concepts
+    - Examples, analogies, or mini-scenarios (where useful)
+    - A brief "Key Takeaways" section summarizing the most important points
+    - A short "Further Reading / References" section
+
+    The tone should be friendly, clear, and educational.
+  agent: educator
+
+generate_quiz_task:
+  name: "Generate quiz for the topic"
+  description: >
+    Based on the educational guide for "{topic}", create a quiz to test understanding.
+    Focus on the most important concepts, definitions, and distinctions.
+    Questions should help reinforce learning, not trick the user.
+
+    Include a variety of question types if possible (e.g., multiple choice, short answer,
+    true/false).
+  expected_output: >
+    A markdown quiz containing:
+    - 5–10 questions about the topic
+    - A mix of question types (multiple choice, short answer, true/false where appropriate)
+    - An answer key with clear explanations for each answer
+
+    Structure:
+    ## Quiz
+    1. Question...
+    2. Question...
+
+    ## Answer Key
+    1. Answer and explanation...
+    2. Answer and explanation...
+  agent: quiz_agent
+
+assemble_result_task:
+  name: "Assemble final learning package for the user"
+  description: >
+    Combine the educational guide and the quiz for the topic "{topic}" into a single,
+    coherent learning package.
+
+    Ensure the final output is well-formatted, easy to read, and clearly segmented.
+    The user should be able to:
+    - Read the guide to learn the topic
+    - Take the quiz to test their understanding
+  expected_output: >
+    A final markdown document containing, in order:
+    - Title for the overall learning package
+    - The educational guide
+    - A clear separator or heading (e.g., "---" or "## Quiz Section")
+    - The quiz and answer key
+
+    Make sure headings, sections, and formatting are consistent and user-friendly.
+  agent: result_delivery
