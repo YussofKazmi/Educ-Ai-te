@@ -86,7 +86,7 @@ generate_quiz_task:
     ## Answer Key
     1. Answer and explanation...
     2. Answer and explanation...
-  agent: quiz_agent
+  agent: quiz_creator
 
 assemble_result_task:
   name: "Assemble final learning package for the user"
@@ -106,4 +106,4 @@ assemble_result_task:
     - The quiz and answer key
 
     Make sure headings, sections, and formatting are consistent and user-friendly.
-  agent: result_delivery
+  agent: result_assembler

@@ -2,7 +2,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
-from crewai_tools import SerperDevTool
+from crewai_tools import SerperDevTool, WebsiteSearchTool
 
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -28,14 +28,16 @@ class Educaite():
     def researcher(self) -> Agent:
         
         return Agent(
-            config=self.agents_config['research_agent'], # type: ignore[index]
-            verbose=True
+            config=self.agents_config['researcher'], # type: ignore[index]
+            verbose=True,
+            tools=[WebsiteSearchTool(website='https://www.wikipedia.org/')],  # Enable web search capability
+            
         )
 
     @agent
     def knowledge_compiler(self) -> Agent:
         return Agent(
-            config=self.agents_config['knowledge_agent'], # type: ignore[index]
+            config=self.agents_config['knowledge_compiler'], # type: ignore[index]
             verbose=True
         )
 
@@ -44,7 +46,7 @@ class Educaite():
     @agent
     def educator(self) -> Agent:
         return Agent(
-            config=self.agents_config['educator_agent'], # type: ignore[index]
+            config=self.agents_config['educator'], # type: ignore[index]
             verbose=True
         )
         
@@ -52,14 +54,14 @@ class Educaite():
     @agent
     def quiz_creator(self) -> Agent:
         return Agent(
-            config=self.agents_config['quiz_agent'], # type: ignore[index]
+            config=self.agents_config['quiz_creator'], # type: ignore[index]
             verbose=True
         )
         
     @agent
-    def result_delivery(self) -> Agent:
+    def result_assembler(self) -> Agent:
         return Agent(
-            config=self.agents_config['result_delivery_agent'], # type: ignore[index]
+            config=self.agents_config['result_assembler'], # type: ignore[index]
             verbose=True
         )
 
@@ -76,7 +78,7 @@ class Educaite():
     def compile_knowledge(self) -> Task:
         return Task(
             config=self.tasks_config['compile_knowledge_task'], # type: ignore[index]
-            output_file='report.md'
+            #output_file='report.md'
         )
 
     @task

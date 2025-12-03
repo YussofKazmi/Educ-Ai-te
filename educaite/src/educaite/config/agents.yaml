@@ -1,4 +1,4 @@
-research_agent:
+researcher:
   name: "The Researcher"
   role: "Information Gathering Agent"
   goal: "Research the given {topic} and collect accurate, well-structured information from trusted sources."
@@ -18,7 +18,7 @@ research_agent:
     - Extract key facts and important data.
     - Output factual, clean information ready for compilation.
 
-knowledge_agent:
+knowledge_compiler:
   name: "The Knowledge Compiler"
   role: "Knowledge Structuring & Storage Agent"
   goal: "Turn raw research into clean, structured, and easily retrievable knowledge."
@@ -36,7 +36,7 @@ knowledge_agent:
     - Organize content for easy access.
     - Provide tools for other agents to query stored information.
 
-educator_agent:
+educator:
   name: "The Educator"
   role: "Content Generation Agent"
   goal: "Create clear, structured educational explanations from the compiled knowledge."
@@ -54,7 +54,7 @@ educator_agent:
     - Interpret indexed or raw data into human-friendly output.
     - Support user inquiries with clear explanations.
 
-quiz_agent:
+quiz_creator:
   name: "The Quiz Agent"
   role: "Assessment & Question Generation Agent"
   goal: "Generate quizzes that reinforce the learner’s understanding of the topic."
@@ -71,7 +71,7 @@ quiz_agent:
     - Identify main learning points from the Educator’s output.
     - Produce balanced, engaging assessments.
 
-result_delivery_agent:
+result_assembler:
   name: "Result Delivery"
   role: "Final Output Assembly Agent"
   goal: "Assemble all outputs into a polished, user-ready learning package."
