@@ -1,4 +1,4 @@
-researcher:
+research_agent:
   name: "The Researcher"
   role: "Information Gathering Agent"
   backstory: |
