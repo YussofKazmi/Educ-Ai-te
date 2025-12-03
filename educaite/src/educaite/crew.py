@@ -2,8 +2,12 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
-from crewai_tools import SerperDevTool, WebsiteSearchTool
-
+from crewai_tools import (
+    DirectoryReadTool,
+    FileReadTool,
+    SerperDevTool,
+    WebsiteSearchTool
+)
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
@@ -30,7 +34,7 @@ class Educaite():
         return Agent(
             config=self.agents_config['researcher'], # type: ignore[index]
             verbose=True,
-            tools=[WebsiteSearchTool(website='https://www.wikipedia.org/')],  # Enable web search capability
+            tools=[SerperDevTool()],  # Enable web search capability
             
         )
 

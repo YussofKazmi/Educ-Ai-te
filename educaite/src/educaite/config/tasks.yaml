@@ -1,15 +1,13 @@
 gather_information_task:
   name: "Gather information on the topic"
   description: >
-    Research and collect high-quality, reliable information about the topic: "{topic}".
-    Search the web and other relevant resources (e.g., Wikipedia, articles, documentation).
-    Focus on definitions, key concepts, historical/contextual background, important subtopics,
-    and any commonly asked questions or misconceptions.
+    Research the topic "{topic}" and provide a high-level overview including:
+     - 1 clear definition
+     - 3–5 key concepts
+     - 3 notable current models with 1–2 bullets each
 
-    Make sure the information is factual, up to date, and from trustworthy sources.
-    Avoid speculation or unverified claims.
-
-    Log your main research steps and decisions briefly.
+     Use web search tools at most 3 times. Prefer authoritative sources like
+     Wikipedia, official model docs, and reputable AI labs.
   expected_output: >
     A well-structured research dossier in markdown with sections such as:
     - Overview of the topic
