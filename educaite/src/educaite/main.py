@@ -19,7 +19,7 @@ def run():
     """
     inputs = {
         'topic': 'AI LLMs',
-        'current_year': str(datetime.now().year)
+        #'current_year': str(datetime.now().year)
     }
 
     try:
